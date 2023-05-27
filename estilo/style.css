@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+}
+
+body{
+    background-color: crimson;
+    color: white;
+    text-align: center;
+}
+
+header{
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+    height: 100px;
+    background-color:gold;
+}
+
+#header-nav{
+    display: flex;
+}
+
+.menu{
+    width: 100vw;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a{
+    font-size: large;
+    text-decoration: none;
+    color: black;
+}
+
+h1{
+    font-family:'Courier New', Courier, monospace;
+    font-size:  5em;
+}
+
+h2{
+    text-decoration: underline;
+}
+
+p{
+    font-size: 20px;
+}
+
+.bgBlack{
+    background-color: rgb(165, 17, 46);
+}
+
+.bgWhite{
+    background-color:rgb(219, 41, 76);
+}
+
+.pFooter{
+    padding: 75px;
+}
+
+/* index */
+
+.parrafo{
+    font-size: 25px;
+}
+
+.imgIndex{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.imagenesDeCarrusel{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
+}
+
+.imagenesDeCarrusel > div{
+    text-align: center;
+    padding: 0;
+    width: 400%;
+    align-items: stretch;
+}
+    
+#indexMain{
+    position:relative;
+    background: url(../img/Matisse2.jpg);
+    height: 0px;
+    width: 100%;
+    padding-top: 90vh;
+}
+
+#innerMain{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 100px;
+    padding: 100px;
+    border: white 10px solid;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.289);
+}
+
+main{
+    position: static;
+    width: 100%;
+    z-index: 1;
+}
+
+#pFooter{
+    display: none;
+}
+
+/* obras */
+
+.fig{
+    font-style: italic;
+    font-size: smaller;
+}
+
+.nosotros{
+    background-image: url(../img/Tríptico.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height:108vh;
+}
+
+.card{
+    padding: 50px;
+}
+
+.left{
+    order: 2;
+}
+
+.right{
+    order: 1;
+}
+
+.sectionObra{
+    display: flex;
+    position: relative;
+    top: 0px;
+}
+
+.articleObra{
+    position: sticky;
+    top: 100px;
+}
+
+/* mapa */
+
+.imgMapa{
+    width: 75vw;
+}
+
+.parrafo{
+    font-size: 25px;
+}
+
+
+.bgBlack{
+    background-color: rgb(165, 17, 46);
+    color: white;
+}
+
+.bgWhite{
+    background-color:rgb(219, 41, 76);
+}
+
+.bgWhite, .bgBlack{
+    padding: 100px;
+}
+
+.imgMapa{
+    width: 75vw;
+}
+
+.mapaMain{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+/* contacto */
+
+.error{
+    color: red;
+    font-size: 1em;
+    display: block;
+    margin-block: 10px;
+}
+
+form{
+    background-color:white;
+    width:430px;
+    margin: auto;
+    color: black;
+    text-align: start;
+    padding: 20px;
+    height: auto;
+}
+input{
+    width: 430px;
+    margin-block: 10px;
+}
+
+
+
+textarea{
+    width: 430px;
+    height: 100px;
+}
+
+label{
+    display: block;
+    margin-block: 10px;
+}

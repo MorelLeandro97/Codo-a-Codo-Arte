@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <!-- <link rel="stylesheet" href="./estilo/estiloIndex.css">
+    <link rel="stylesheet" href="./estilo/style.css"> -->
+    <link rel="stylesheet" href="./estilo/style.css">
+</head>
+<body>
+    <header id="header-nav">
+        <nav class="menu">
+            <a href="obras.html">Obras Famosas</a>
+            <a href="nosotres.html">Acerca de nosotres</a>
+            <a href="mapaInteractivo.html">Mapa interactivo</a>
+            <a href="index.html">Página principal</a>
+        </nav>
+    </header>
+
+    <main>
+    <h1>Contacto</h1>
+
+    <form action="https://formspree.io/f/mnqyyvke" method="post" name="myForm">
+        <p>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" autofocus required>
+            <span class="error"></span>
+        </p>
+       
+        <p>
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" required>
+            <span class="error"></span>
+        </p>
+        
+        <p>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error"></span>
+        </p>
+        
+        <p>
+            <label for="mensaje">Mensaje</label>
+            <textarea name="mensaje" id="mensaje" cols="30" rows="10" required></textarea>
+            <span class="error"></span>
+        </p>
+        
+        <input type="submit">
+    </form>
+
+</main>
+<footer>
+    <p class="pFooter">Copyright 2023 © Codo a Codo <em>Grupo 10</em>, comisión 23033</p>
+ </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
