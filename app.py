@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 # //username:password@url/nombre de la base de datos
-app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost/proyectoCAC'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root@localhost/proyectoCaC'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False 
 
 

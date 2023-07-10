@@ -1,38 +1,74 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Title</title>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
- 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="obras, arte, museos, mapa, historia, ciudad, cultura">
+    <meta name="description" content="página principal de arte">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="./estilo/style.css">
+    <title>Programación Codo a Codo</title>
 </head>
-
 <body>
-  <header id="header">
+
+        <!--Acá va la barra de navegación y el buscador tmb -->
+        <header class="sticky-top">
+          <nav class="sticky-top navbar navbar-expand-lg">
+          <div class="container">
+            <a class="navbar-brand" href="index.html">Página principal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="obras.html">Obras Famosas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="nosotres.html">Acerca de nosotres</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="mapaInteractivo.html">Mapa interactivo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="productos.html">Productos</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    <main id="indexMain">
+        <div id="innerMain">
+        <!--Contenido principal, imagen con texto e introducción breve de la pagina -->
+        <h1 class="titulo">ARTE</h1>
+        <p class="parrafo">El arte moderno es una categoría muy amplia.<br> Abarca todo el arte creado entre 1860 y 1970 e incluye diferentes movimientos artísticos,<br> como el cubismo, el posimpresionismo, el surrealismo y el impresionismo, entre otros.<br> Con tantas pinturas emblemáticas de arte moderno ha sido muy difícil elegir solo 5.</p>
+        </div>
+    </main>
+
     
     
-  </header>
-  <main>
 
-  </main>
-  <footer>
-    <!-- place footer here -->
-  </footer>
-  
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
+    
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-  <script src="./js/main.js"></script>
-</body>
-
+  <p id="pFooter">Para ver las obras más reconocidas de los últimos siglos diríjase a la entrada <a href="obras.html">"Obras famosas"</a>.</p>
+    <div class="imagenesDeCarrusel">
+        <div><img src="img/Tríptico.jpg" alt="Tríptico" class="imgIndex"></div>
+        <div><img src="img/giaconda.jpg" alt="La giaconda" class="imgIndex"></div>
+        <div><img src="img/Matisse-la-alegria-de-vivir-768x560.jpg" alt="La Alegría de Vivir" class="imgIndex"></div>
+        <div><img src="img/nocheestrellada.jpg" alt="La noche estrellada" class="imgIndex"></div>
+        <div><img src="img/ultimacena.jpg" alt="La última cena" class="imgIndex"></div>
+        <div><img src="img/elbeso.jpg" alt="El Beso" class="imgIndex"></div>
+        <div><img src="img/guernica.jpg" alt="Guernica" class="imgIndex"></div>
+        <div><img src="img/jovenperla.jpg" alt="Joven Perla" class="imgIndex"></di/guernica.j/jovenperla.jpg>
+          <div><h2>Acerca de nosotres</h2>
+    </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
 </html>

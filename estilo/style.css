@@ -8,17 +8,13 @@ body{
     text-align: center;
 }
 
-header{
-    position: sticky;
-    top: 0px;
-    width: 100%;
-    z-index: 2;
+nav{
     height: 100px;
     background-color:gold;
 }
 
-#header-nav{
-    display: flex;
+ul{
+    background-color: gold;
 }
 
 .menu{
@@ -45,6 +41,7 @@ h2{
 
 p{
     font-size: 20px;
+    margin-inline: 50px;
 }
 
 .bgBlack{
@@ -108,11 +105,8 @@ p{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px;
-    padding: 100px;
-    border: white 10px solid;
     color: white;
-    background-color: rgba(0, 0, 0, 0.289);
+    background-color: rgba(0, 0, 0, 0.534);
 }
 
 main{
@@ -140,8 +134,8 @@ main{
     height:108vh;
 }
 
-.card{
-    padding: 50px;
+.imgObras{
+    width: 70%;
 }
 
 .left{
@@ -152,18 +146,20 @@ main{
     order: 1;
 }
 
-.sectionObra{
-    display: flex;
-    position: relative;
-    top: 0px;
-}
-
 .articleObra{
     position: sticky;
     top: 100px;
 }
 
 /* mapa */
+
+.divMapa{
+    z-index: 1;
+}
+
+article{
+    z-index: 1;
+}
 
 .imgMapa{
     width: 75vw;
@@ -184,7 +180,7 @@ main{
 }
 
 .bgWhite, .bgBlack{
-    padding: 100px;
+    margin: 30px;
 }
 
 .imgMapa{
@@ -210,11 +206,11 @@ main{
 
 form{
     background-color:white;
-    width:430px;
+    width:500px;
     margin: auto;
     color: black;
     text-align: start;
-    padding: 20px;
+    padding: 30px;
     height: auto;
 }
 input{
@@ -232,4 +228,12 @@ textarea{
 label{
     display: block;
     margin-block: 10px;
+}
+
+/* Formularios */
+
+#forms{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 190px;
 }

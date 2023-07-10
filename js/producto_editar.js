@@ -1,0 +1,52 @@
+
+console.log(location.search)     // lee los argumentos pasados a este formulario
+var args = location.search.substr(1).split('&');  
+console.log(args)
+
+var parts = []
+for (let i = 0; i < args.length; ++i) {
+    parts[i] = args[i].split('=');
+}
+console.log(parts)
+
+//// [[“id",3] , [“nombre",’tv50’]]
+//decodeUriComponent elimina los caracteres especiales que recibe en la URL 
+document.getElementById("id").value = decodeURIComponent(parts[0][1])
+document.getElementById("nombre").value = decodeURIComponent(parts[1][1])
+document.getElementById("precio").value = decodeURIComponent(parts[2][1])
+document.getElementById("stock").value =decodeURIComponent( parts[3][1])
+document.getElementById("imagen").value =decodeURIComponent( parts[4][1])
+
+function modificar() {
+    let id = document.getElementById("id").value
+    let n = document.getElementById("nombre").value
+    let p = parseFloat(document.getElementById("precio").value)
+    let s = parseInt(document.getElementById("stock").value)
+    let i = document.getElementById("imagen").value
+   
+    let producto = {
+        nombre: n,
+        precio: p,
+        stock: s,
+        imagen: i
+    }
+    let url = "http://127.0.0.1:5000/productos/"+id
+    var options = {
+        body: JSON.stringify(producto),
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        redirect: 'follow'
+    }
+    fetch(url, options)
+        .then(function () {
+            console.log("modificado")
+            alert("Registro modificado")
+            window.location.href = "./productos.html";  
+        //NUEVO,  si les da error el fetch  comentar esta linea que puede dar error  
+        })
+        .catch(err => {
+            // this.errored = true
+           alert("Error al Modificar")
+           console.error(err);
+        })      
+}
