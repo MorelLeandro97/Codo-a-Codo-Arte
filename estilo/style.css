@@ -10,29 +10,15 @@ body{
 
 nav{
     height: 100px;
-    background-color:gold;
 }
 
-ul{
+ul, nav{
     background-color: gold;
-}
-
-.menu{
-    width: 100vw;
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-a{
-    font-size: large;
-    text-decoration: none;
-    color: black;
 }
 
 h1{
     font-family:'Courier New', Courier, monospace;
-    font-size:  5em;
+    font-size: 55px;
 }
 
 h2{
@@ -44,23 +30,11 @@ p{
     margin-inline: 50px;
 }
 
-.bgBlack{
-    background-color: rgb(165, 17, 46);
-}
-
-.bgWhite{
-    background-color:rgb(219, 41, 76);
-}
-
 .pFooter{
     padding: 75px;
 }
 
 /* index */
-
-.parrafo{
-    font-size: 25px;
-}
 
 .imgIndex{
     height: 100%;
@@ -153,46 +127,12 @@ main{
 
 /* mapa */
 
-.divMapa{
-    z-index: 1;
-}
-
-article{
-    z-index: 1;
+.museos{
+    margin-block: 100px;
 }
 
 .imgMapa{
-    width: 75vw;
-}
-
-.parrafo{
-    font-size: 25px;
-}
-
-
-.bgBlack{
-    background-color: rgb(165, 17, 46);
-    color: white;
-}
-
-.bgWhite{
-    background-color:rgb(219, 41, 76);
-}
-
-.bgWhite, .bgBlack{
-    margin: 30px;
-}
-
-.imgMapa{
-    width: 75vw;
-}
-
-.mapaMain{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    align-content: center;
+    width: 80vw;
 }
 
 /* contacto */
@@ -206,22 +146,21 @@ article{
 
 form{
     background-color:white;
-    width:500px;
+    width:90%;
     margin: auto;
     color: black;
     text-align: start;
-    padding: 30px;
+    padding: 10%;
     height: auto;
 }
-input{
-    width: 430px;
-    margin-block: 10px;
+input, textarea{
+    width: 80%;
+    margin-block: 5px;
 }
 
 
 
 textarea{
-    width: 430px;
     height: 100px;
 }
 
