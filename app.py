@@ -1,107 +1,143 @@
-from flask import Flask, jsonify, request
+# IMPORTAR HERRAMIENTAS
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_marshmallow import Marshmallow
-from flask_sqlalchemy import SQLAlchemy
 
+# Crear la app
 app = Flask(__name__)
 
+# Usar Cors para dar acceso a las rutas(ebdpoint) desde frontend
 CORS(app)
 
-# //username:password@url/nombre de la base de datos
-app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root@localhost/proyectoCaC'
+# CONFIGURACIÓN A LA BASE DE DATOS DESDE app
+#  (SE LE INFORMA A LA APP DONDE UBICAR LA BASE DE DATOS)
+                                                    # //username:password@url/nombre de la base de datos
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost/proyecto'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False 
 
-
+# COMUNICAR LA APP CON SQLALCHEMY
 db = SQLAlchemy(app)
 
+# PERMITIR LA TRANSFORMACIÓN DE DATOS
 ma = Marshmallow(app)
 
-class Producto(db.Model):
+
+# ESTRUCTURA DE LA TABLA producto A PARTIR DE LA CLASE
+class Cliente(db.Model):
     id =db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100))
-    precio = db.Column(db.Integer)
-    stock = db.Column(db.Integer)
-    imagen = db.Column(db.String(400))
+    mail = db.Column(db.String(100))
+    domicilio = db.Column(db.String(200))
+    numero = db.Column(db.Integer)
 
-    def __init__(self,nombre,precio,stock,imagen):
+    def __init__(self,nombre,mail,domicilio,numero):
         self.nombre = nombre
-        self.precio = precio
-        self.stock = stock
-        self.imagen = imagen 
+        self.mail = mail
+        self.domicilio = domicilio
+        self.numero = numero 
 
 
+# CÓDIGO PARA CREAR LAS TABLAS DEFINIDAS EN LAS CLASES
 with app.app_context():
     db.create_all()
 
-
-class ProductoSchema(ma.Schema):
+# CREAR UNA CLASE  ProductoSchema, DONDE SE DEFINEN LOS CAMPOS DE LA TABLA
+class ClienteSchema(ma.Schema):
     class Meta:
-        fields=('id','nombre','precio','stock','imagen')
+        fields=('id','nombre','mail','domicilio','numero')
 
 
+# DIFERENCIAR CUANDO SE TRANSFORME UN DATO O UNA LISTA DE DATOS
+cliente_schema = ClienteSchema()
+clientes_schema = ClienteSchema(many=True)
 
-producto_schema = ProductoSchema()
-productos_schema = ProductoSchema(many=True)
+@app.route('/')
+def hello_world():
+    return 'Bienvenido a Clientes'
+
+# CREAR LAS RUTAS PARA: productos
+# '/productos' ENDPOINT PARA MOSTRAR TODOS LOS PRODUCTOS DISPONIBLES EN LA BASE DE DATOS: GET
+# '/productos' ENDPOINT PARA RECIBIR DATOS: POST
+# '/productos/<id>' ENDPOINT PARA MOSTRAR UN PRODUCTO POR ID: GET
+# '/productos/<id>' ENDPOINT PARA BORRAR UN PRODUCTO POR ID: DELETE
+# '/productos/<id>' ENDPOINT PARA MODIFICAR UN PRODUCTO POR ID: PUT
+
+@app.route("/clientes", methods=['GET'])
+def get_clientes():
+                    # select * from producto
+    all_clientes = Cliente.query.all()
+    # Almacena un listado de objetos
+
+    return clientes_schema.jsonify(all_clientes)
 
 
-
-
-@app.route("/productos", methods=['GET'])
-def get_productos():
-                    
-    all_productos = Producto.query.all()
-    return productos_schema.jsonify(all_productos)
-
-
-@app.route("/productos", methods=['POST'])
-def create_productos():
-
+@app.route("/clientes", methods=['POST'])
+def create_clientes():
+    """
+    Entrada de datos:
+    {
+        "imagen": "https://picsum.photos/200/300?grayscale",
+        "nombre": "MICROONDAS",
+        "precio": 50000,
+        "stock": 10
+}
+    """
     nombre = request.json['nombre']
-    precio = request.json['precio']
-    stock = request.json['stock']
-    imagen = request.json['imagen']
+    mail = request.json['mail']
+    domicilio = request.json['domicilio']
+    numero = request.json['numero']
 
-    new_producto = Producto(nombre, precio, stock, imagen)
-    db.session.add(new_producto)
+    new_cliente = Cliente(nombre, mail, domicilio, numero)
+    db.session.add(new_cliente)
     db.session.commit()
 
-    return producto_schema.jsonify(new_producto)
+    return cliente_schema.jsonify(new_cliente)
 
 
-@app.route("/productos/<id>", methods=['GET'])
-def get_producto(id):
-    producto = Producto.query.get(id)
-    return producto_schema.jsonify(producto)
+@app.route("/clientes/<id>", methods=['GET'])
+def get_cliente(id):
+    cliente = Cliente.query.get(id)
+
+    return cliente_schema.jsonify(cliente)
 
 
-@app.route('/productos/<id>',methods=['DELETE'])
-def delete_producto(id):
+@app.route('/clientes/<id>',methods=['DELETE'])
+def delete_cliente(id):
+    # Consultar por id, a la clase Producto.
+    #  Se hace una consulta (query) para obtener (get) un registro por id
+    cliente=Cliente.query.get(id)
     
-    producto=Producto.query.get(id)
-    db.session.delete(producto)
+    # A partir de db y la sesión establecida con la base de datos borrar 
+    # el producto.
+    # Se guardan lo cambios con commit
+    db.session.delete(cliente)
     db.session.commit()
 
-    return producto_schema.jsonify(producto)
+    return cliente_schema.jsonify(cliente)
     
 
-@app.route('/productos/<id>',methods=['PUT'])
-def update_producto(id):
-    producto=Producto.query.get(id)
+@app.route('/clientes/<id>',methods=['PUT'])
+def update_cliente(id):
+    # Consultar por id, a la clase Producto.
+    #  Se hace una consulta (query) para obtener (get) un registro por id
+    cliente=Cliente.query.get(id)
  
-    nombre= request.json['nombre']
-    precio= request.json['precio']
-    stock= request.json['stock']
-    imagen= request.json['imagen']
+    #  Recibir los datos a modificar
+    nombre=request.json['nombre']
+    mail=request.json['mail']
+    domicilio=request.json['domicilio']
+    numero=request.json['numero']
 
-
-    producto.nombre=nombre
-    producto.precio=precio
-    producto.stock=stock
-    producto.imagen=imagen
-
+    # Del objeto resultante de la consulta modificar los valores  
+    cliente.nombre=nombre
+    cliente.mail=mail
+    cliente.domicilio=domicilio
+    cliente.numero=numero
+#  Guardar los cambios
     db.session.commit()
-
-    return producto_schema.jsonify(producto)
+# Para ello, usar el objeto producto_schema para que convierta con                     # jsonify el dato recién eliminado que son objetos a JSON  
+    return cliente_schema.jsonify(cliente)
 
 
 

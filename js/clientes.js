@@ -3,8 +3,8 @@ const { createApp } = Vue
   createApp({
     data() {
       return {
-        url:"http://127.0.0.1:5000/productos",
-        productos:[],
+        url:"https://artecodoacodo.pythonanywhere.com/clientes",
+        clientes:[],
         error:false,
         cargando:true
       }
@@ -19,7 +19,7 @@ const { createApp } = Vue
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    this.productos = data;
+                    this.clientes = data;
                     this.cargando=false
                 })
                 .catch(err => {
@@ -27,8 +27,8 @@ const { createApp } = Vue
                     this.error=true              
                 })
         },
-        eliminar(producto) {
-            const url = "http://127.0.0.1:5000/productos/" + producto;
+        eliminar(cliente) {
+            const url = "https://artecodoacodo.pythonanywhere.com/clientes/" + cliente;
             var options = {
                 method: 'DELETE',
             }

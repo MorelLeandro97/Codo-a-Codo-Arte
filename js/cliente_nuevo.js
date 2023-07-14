@@ -1,20 +1,20 @@
 function guardar() {
     let n = document.getElementById("nombre").value
-    let p = parseFloat(document.getElementById("precio").value)
-    let s = parseInt(document.getElementById("stock").value)
-    let i = document.getElementById("imagen").value
+    let m = document.getElementById("mail").value
+    let d = document.getElementById("domicilio").value
+    let t = parseInt(document.getElementById("numero").value)
 
     
 
-    let producto = {
+    let cliente = {
         nombre: n,
-        precio: p,
-        stock: s,
-        imagen: i
+        mail: m,
+        domicilio: d,
+        numero: t
     }
-    let url = "http://127.0.0.1:5000/productos"
+    let url = "https://artecodoacodo.pythonanywhere.com/clientes"
     var options = {
-        body: JSON.stringify(producto),
+        body: JSON.stringify(cliente),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
     }
@@ -23,7 +23,7 @@ function guardar() {
             console.log("creado")
             alert("Grabado")
             // Devuelve el href (URL) de la página actual
-            window.location.href = "./productos.html";  
+            window.location.href = "./clientes.html";  
             // Handle response we get from the API
         })
         .catch(err => {
